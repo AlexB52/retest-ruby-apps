@@ -1,4 +1,9 @@
-FROM ruby:2.4.8
+FROM ruby:2.4.8-alpine
+
+RUN apk update && \
+    apk upgrade && \
+    apk add build-base && \
+    rm -rf /var/cache/apk/*
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1

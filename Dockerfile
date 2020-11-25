@@ -1,8 +1,10 @@
-FROM ruby:2.4.8-alpine
+FROM ruby:2.4.8-alpine AS build-env
+
+ARG BUILD_PACKAGES="build-base git"
 
 RUN apk update && \
     apk upgrade && \
-    apk add build-base && \
+    apk add --update --no-cache $BUILD_PACKAGES && \
     rm -rf /var/cache/apk/*
 
 # throw errors if Gemfile has been modified since Gemfile.lock
@@ -17,4 +19,17 @@ RUN bundle install
 
 COPY . .
 
-CMD ["./your-daemon-or-script.rb"]
+FROM ruby:2.4.8-alpine
+
+############### Build step done ###############
+
+# throw errors if Gemfile has been modified since Gemfile.lock
+RUN bundle config --global frozen 1
+
+WORKDIR /.
+
+ENV LANG C.UTF-8
+
+COPY . .
+
+CMD ["ruby", "./program.rb"]

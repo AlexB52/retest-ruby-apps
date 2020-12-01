@@ -32,4 +32,4 @@ ENV LANG C.UTF-8
 
 COPY . .
 
-CMD ["ruby", "./program.rb"]
+CMD ["ruby", "test/bottle_test.rb"]

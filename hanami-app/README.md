@@ -20,6 +20,13 @@ bundle exec hanami db prepare
 bundle exec hanami server # visit http://localhost:2300/books/new
 ```
 
+## Testing
+
+```bash
+HANAMI_ENV=test bundle exec hanami db prepare
+bundle exec rake
+```
+
 This repository is intended to be used for instructional purposes.
 
 For example,

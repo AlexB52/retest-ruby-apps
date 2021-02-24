@@ -15,7 +15,7 @@ describe 'Add a book' do
       click_button 'Create'
     end
 
-    current_path.must_equal('/books')
+    _(current_path).must_equal('/books')
     assert page.has_content?('Example book')
   end
 
@@ -26,7 +26,7 @@ describe 'Add a book' do
       click_button 'Create'
     end
 
-    current_path.must_equal('/books')
+    _(current_path).must_equal('/books')
 
     assert page.has_content?('There was a problem with your submission')
     assert page.has_content?('Title must be filled')

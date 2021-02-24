@@ -11,6 +11,6 @@ describe Web::Views::Books::Create do
     skip 'This is an auto-generated test. Edit it and add your own tests.'
 
     # Example
-    view.foo.must_equal exposures.fetch(:foo)
+    _(view.foo).must_equal exposures.fetch(:foo)
   end
 end

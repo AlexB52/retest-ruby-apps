@@ -20,9 +20,9 @@ describe Web::Views::Books::New do
   it 'displays list of errors when params contains errors' do
     params.valid? # trigger validations
 
-    rendered.must_include('There was a problem with your submission')
-    rendered.must_include('Title is missing')
-    rendered.must_include('Author is missing')
+    _(rendered).must_include('There was a problem with your submission')
+    _(rendered).must_include('Title is missing')
+    _(rendered).must_include('Author is missing')
   end
 end
 

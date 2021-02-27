@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  retest:
+    build: ./ruby-app
+    volumes:
+      - ./ruby-app:/usr/src/app
+    command: ruby retest.rb
+
+  user:
+    build: ./ruby-app
+    volumes:
+      - ./ruby-app:/usr/src/app
+    depends_on:
+      - retest
+    command: ruby program.rb

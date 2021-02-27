@@ -3,12 +3,22 @@ name: CI
 on: pull_request
 
 jobs:
-  ci-tests:
-    name: Run Test Suite
+  ruby-tests:
+    name: Run retest on a ruby project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Setup CI container
-        run: bin/test
+        run: docker-compose -f ruby-app/docker-compose.yml up --abort-on-container-exit
+
+  hanami-tests:
+    name: Run retest on an hanami project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup CI container
+        run: docker-compose -f hanami-app/docker-compose.yml up --abort-on-container-exit

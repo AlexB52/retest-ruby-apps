@@ -1,16 +1,30 @@
 version: '3'
 
 services:
-  retest:
+  ruby-retest:
     build: ./ruby-app
     volumes:
       - ./ruby-app:/usr/src/app
     command: ruby retest.rb
 
-  user:
+  ruby-user:
     build: ./ruby-app
     volumes:
       - ./ruby-app:/usr/src/app
     depends_on:
-      - retest
+      - ruby-retest
+    command: ruby program.rb
+
+  hanami-retest:
+    build: ./hanami-app
+    volumes:
+      - ./hanami-app:/usr/src/app
+    command: ruby retest.rb
+
+  hanami-user:
+    build: ./hanami-app
+    volumes:
+      - ./hanami-app:/usr/src/app
+    depends_on:
+      - hanami-retest
     command: ruby program.rb

@@ -5,17 +5,4 @@ services:
     build: .
     volumes:
       - .:/usr/src/app
-      # - bundle-cache:/usr/local/bundle
-    command: ruby retest.rb
-
-  user:
-    build: .
-    volumes:
-      - .:/usr/src/app
-      # - bundle-cache:/usr/local/bundle
-    depends_on:
-      - retest
-    command: ruby program.rb
-
-# volumes:
-#   bundle-cache: {}
+    command: ruby retest/retest_test.rb

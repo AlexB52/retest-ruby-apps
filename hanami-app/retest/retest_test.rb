@@ -6,12 +6,16 @@ $stdout.sync = true
 include FileHelper
 
 class RailsTest < Minitest::Test
+  def setup
+    @command = "retest --rake"
+  end
+
   def teardown
     end_retest @output, @pid
   end
 
   def test_start_retest
-    @output, @pid = launch_retest
+    @output, @pid = launch_retest @command
 
     assert_match <<~EXPECTED, @output.read
       Launching Retest...

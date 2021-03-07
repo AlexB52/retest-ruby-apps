@@ -23,9 +23,9 @@ module FileHelper
   end
 end
 
-def launch_retest
+def launch_retest(command)
   file = OutputFile.new
-  pid  = Process.spawn "retest --ruby", out: file.path
+  pid  = Process.spawn command, out: file.path
   sleep 1.5
   [file, pid]
 end

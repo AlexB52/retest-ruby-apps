@@ -7,7 +7,7 @@ include FileHelper
 
 class RailsTest < Minitest::Test
   def setup
-    @command = "retest --rails"
+    @command = "retest --rake"
   end
 
   def teardown

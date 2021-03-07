@@ -7,13 +7,13 @@ module FileHelper
     old_content = File.read(path)
     File.open(path, 'w') { |file| file.write old_content }
 
-    sleep 1
+    sleep 5
   end
 
   def create_file(path, should_sleep: true)
     File.open(path, "w").tap(&:close)
 
-    sleep 1 if should_sleep
+    sleep 5 if should_sleep
   end
 
   def delete_file(path)

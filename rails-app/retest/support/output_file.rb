@@ -1,10 +1,15 @@
+require 'securerandom'
+
 class OutputFile
+  attr_reader :id
+
   def initialize
+    @id = SecureRandom.hex(10)
     create_file
   end
 
   def path
-    "output.log"
+    "tmp/output-#{id}.log"
   end
   alias :to_s :path
 
@@ -24,13 +29,7 @@ class OutputFile
   private
 
   def create_file
+    Dir.mkdir('tmp') unless Dir.exists?('tmp')
     File.open(path, "w")
   end
 end
-
-$stdout.sync = true
-puts "starting test"
-@file = OutputFile.new
-@pid = Process.spawn "retest --rake", out: @file.path
-puts "retest started in a thread"
-sleep

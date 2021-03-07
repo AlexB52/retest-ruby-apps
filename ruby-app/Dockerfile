@@ -22,7 +22,7 @@ COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.1.4
 RUN bundle config --delete frozen
 RUN bundle install
-RUN gem install retest
+RUN gem install retest -v 0.8.1
 
 COPY . /usr/src/app
 

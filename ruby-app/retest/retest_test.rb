@@ -10,6 +10,15 @@ class RailsTest < Minitest::Test
     end_retest @output, @pid
   end
 
+  def test_start_retest
+    @output, @pid = launch_retest
+
+    assert_match <<~EXPECTED, @output.read
+      Launching Retest...
+      Ready to refactor! You can make file changes now
+    EXPECTED
+  end
+
   def test_modifying_existing_file
     @output, @pid = launch_retest
 

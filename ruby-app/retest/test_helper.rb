@@ -23,7 +23,6 @@ module FileHelper
   end
 end
 
-
 def launch_retest
   file = OutputFile.new
   pid  = Process.spawn "retest --ruby", out: file.path

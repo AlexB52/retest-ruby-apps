@@ -16,7 +16,7 @@ class OutputFile
   def read
     return unless File.exists?(path)
 
-    File.read(path)
+    File.read(path).split('[H[J').last
   end
 
   def delete

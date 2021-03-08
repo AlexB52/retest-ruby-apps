@@ -18,11 +18,11 @@ ENV BUNDLER_VERSION 2.1
 ENV GEM_HOME="/usr/local/bundle"
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock retest.gem ./
 RUN gem install bundler -v 2.1.4
 RUN bundle config --delete frozen
 RUN bundle install
-RUN gem install retest -v 0.8.1
+RUN gem install retest.gem
 
 COPY . /usr/src/app
 
